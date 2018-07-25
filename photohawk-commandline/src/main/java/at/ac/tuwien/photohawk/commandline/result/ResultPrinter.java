@@ -31,4 +31,6 @@ public interface ResultPrinter<AggregatedResult, Result> {
      * @param op the result to print
      */
     void print(TransientOperation<AggregatedResult, Result> op);
+
+    public String[] toStringArray(TransientOperation<AggregatedResult, Result> op);
 }

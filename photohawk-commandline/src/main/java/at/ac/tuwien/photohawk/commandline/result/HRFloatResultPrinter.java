@@ -49,4 +49,18 @@ public class HRFloatResultPrinter implements ResultPrinter<Float, StaticColor> {
 
         w.flush();
     }
+
+    @Override
+    public String[] toStringArray(TransientOperation<Float, StaticColor> op) {
+        String[] returnString = new String[4];
+        //w.format("%f%n", op.getAggregatedResult());
+        returnString[0] = String.valueOf(op.getAggregatedResult());
+        for (int i = 0; i < op.getResult().getNumberOfChannels(); i++) {
+            if(returnString.length > i+1)
+                returnString[i+1] = String.valueOf(op.getResult().getChannelDescription(i)) +  ":" + String.valueOf(op.getResult().getChannelValue(i));
+            //w.format(": %f%n", op.getResult().getChannelValue(i));
+        }
+
+        return returnString;
+    }
 }

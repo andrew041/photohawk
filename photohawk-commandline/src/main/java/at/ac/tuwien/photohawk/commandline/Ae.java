@@ -79,7 +79,7 @@ class Ae implements Command {
     }
 
     @Override
-    public void evaluate() {
+    public String[] evaluate() {
         File left = n.get(LEFT);
         File right = n.get(RIGHT);
 
@@ -92,15 +92,17 @@ class Ae implements Command {
             // Evaluate
             TransientOperation<Float, StaticColor> op = aeQa.evaluate(leftImg, rightImg);
             System.gc();
-            resultPrinter.print(op);
+            return resultPrinter.toStringArray(op);
         } catch (PreprocessingException e) {
             subparser.printUsage();
             System.err.println("Cannot process files");
             System.err.println(e.getMessage());
+            return new String[] {"Cannot process files"};
         } catch (IOException e) {
             subparser.printUsage();
             System.err.println("Cannot read file");
             System.err.println(e.getMessage());
+            return new String[] {"Cannot read file"};
         }
     }
 }

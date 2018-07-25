@@ -42,4 +42,10 @@ public class HRBooleanResultPrinter implements ResultPrinter<Boolean, Boolean> {
         w.println(op.getAggregatedResult());
         w.flush();
     }
+
+    @Override
+    public String[] toStringArray(TransientOperation<Boolean, Boolean> op) {
+        String[] returnString = new String[]{String.valueOf(op.getAggregatedResult())};
+        return returnString;
+    }
 }

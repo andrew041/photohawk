@@ -34,7 +34,7 @@ public class ScalePreprocessor implements Preprocessor {
 
     private static final int INTERPOLATION_TYPE = AffineTransformOp.TYPE_BICUBIC;
 
-    private static final int[] SIGNIFICANT_BITS_PER_COMPONENT = new int[]{16, 16, 16};
+    private static final int[] SIGNIFICANT_BITS_PER_COMPONENT = new int[]{16, 16, 16, 16};
 
     protected BufferedImage img1;
     protected BufferedImage img2;

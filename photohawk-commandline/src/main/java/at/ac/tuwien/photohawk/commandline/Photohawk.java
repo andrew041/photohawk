@@ -61,7 +61,7 @@ public class Photohawk {
      * @param args command line parameters
      * @throws PhotohawkException if the program could not be initialized
      */
-    public void init(String[] args) {
+    public String[] init(String[] args) {
         ArgumentParser parser = ArgumentParsers.newArgumentParser("photohawk").defaultHelp(true);
 
         try {
@@ -109,10 +109,10 @@ public class Photohawk {
             Namespace res = parser.parseArgs(args);
             Command c = res.get(COMMAND);
             c.configure(res);
-            c.evaluate();
+            return c.evaluate();
         } catch (ArgumentParserException e) {
             parser.handleError(e);
-            System.exit(1);
+            return new String[]{"ERROR: Parser error thrown: " + e.getMessage()};
         }
     }
 

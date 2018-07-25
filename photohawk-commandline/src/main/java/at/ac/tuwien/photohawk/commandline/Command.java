@@ -38,5 +38,5 @@ public interface Command {
     /**
      * Evaluates the command.
      */
-    void evaluate();
+    String[] evaluate();
 }
